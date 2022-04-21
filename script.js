@@ -31,3 +31,14 @@ for(let book of library){
     bookPages.textContent = 'Pages: ' + this.pages;
     book1.appendChild(bookPages);
 }
+
+function openForm(){
+    document.querySelector('.formCont').style.display = "grid";
+  
+}
+
+function closeForm(){
+    document.querySelector('.formCont').style.display = 'none';
+}
+
+
