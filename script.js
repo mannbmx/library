@@ -2,10 +2,11 @@ let library = [];
 
 
 //Both creates a book and adds it to the DOM for display
-function addBook(name, author, pages){
+function addBook(name, author, pages, read){
     this.name = name;
     this.author = author;
     this.pages = pages;
+    this.read = read;
     addToLibrary(this);
 
     let libCont = document.querySelector('.content');
@@ -27,6 +28,27 @@ function addBook(name, author, pages){
     bookPages.textContent = 'Pages: ' + this.pages;
     bookPages.classList = 'bookInfo pages'
     book1.appendChild(bookPages);
+
+    let bookRead =  document.createElement('button');
+    if(this.read == true){
+        bookRead.textContent = "Read It!";
+        bookRead.classList = 'bookInfo bookButton beenRead';
+        bookRead.addEventListener('click', function(){
+            bookRead.classList.remove('beenRead');
+            bookRead.classList.add('notRead');
+            bookRead.textContent = 'Mark Read?'
+        })
+    }else{
+        bookRead.textContent = "Mark Read?";
+        bookRead.classList = 'bookInfo bookButton notRead';
+        bookRead.addEventListener('click', function(){
+            bookRead.classList.remove('notRead');
+            bookRead.classList.add('beenRead');
+            bookRead.textContent = 'Read It!'
+        })
+    };
+    book1.appendChild(bookRead);
+
 };
 
 
@@ -41,8 +63,9 @@ function getVal(){
     const titleVal = document.getElementById('title');
     const authorVal = document.querySelector('#author');
     const pagesVal = document.querySelector('#pages');
+    const readVal = document.querySelector('#read');
 
-    const book = new addBook(titleVal.value, authorVal.value, pagesVal.value);
+    const book = new addBook(titleVal.value, authorVal.value, pagesVal.value, readVal.checked);
     closeForm();
 }
 
@@ -60,10 +83,11 @@ function closeForm(){
     const titleVal = document.getElementById('title');
     const authorVal = document.querySelector('#author');
     const pagesVal = document.querySelector('#pages');
-    const readVal = document.querySelector('read');
+    const readVal = document.querySelector('#read');
     titleVal.value = '';
     authorVal.value = '';
     pagesVal.value = '';
+    readVal.checked = false;
 
 }
 

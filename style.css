@@ -75,10 +75,11 @@ body{
     border: 2px solid black;
     border-radius: 10px;
     display: grid; 
-    grid-template-columns: .1fr 1fr .1fr;
+    grid-template-columns: .1fr 1fr .6fr;
     grid-template-rows: repeat(3, 1fr);
     justify-items: center;
-    width: minmax(200px, 25vw);
+    min-width: 200px;
+    max-width: 25vw;
     background-color: rgb(240, 239, 231);
     padding: 20px;
     row-gap: 15px;
@@ -98,4 +99,16 @@ body{
 
 h4{
     margin: 0;
+}
+
+.notRead{
+    background-color: rgba(255, 0, 0, 0.404);
+}
+
+.beenRead{
+    background-color: rgba(0, 128, 0, 0.493);
+}
+
+.bookButton{
+    cursor: pointer;
 }
