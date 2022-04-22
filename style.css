@@ -22,7 +22,7 @@ body{
 
 .add{
     width: 13vw;
-    height: 7vh;
+    height: 6vh;
     border-radius: 10px;
 }
 
@@ -30,6 +30,10 @@ body{
     border: 2px solid black;
     border-radius: 10px;
     display: none;
+    position: absolute;
+    top: 25vh;
+    background-color: rgb(240, 239, 231);
+
 }
 
 .addForm{
@@ -53,10 +57,45 @@ body{
     margin-right: -5px;
     margin-top: -15px;
     border: none;
-    background-color: white;
+    background-color: none;
     width: 5px;
     justify-self: end;
     align-self: start;
     cursor: pointer;
 }
 
+.content{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    width: 60%;
+    gap: 20px;
+}
+
+.bookCard{
+    border: 2px solid black;
+    border-radius: 10px;
+    display: grid; 
+    grid-template-columns: .1fr 1fr .1fr;
+    grid-template-rows: repeat(3, 1fr);
+    justify-items: center;
+    width: minmax(200px, 25vw);
+    background-color: rgb(240, 239, 231);
+    padding: 20px;
+    row-gap: 15px;
+}
+
+.title{
+    grid-column: 2/3;
+}
+
+.author{
+    grid-column: 2/3;
+}
+
+.pages {
+    grid-column: 2/3;
+}
+
+h4{
+    margin: 0;
+}
