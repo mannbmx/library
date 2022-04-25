@@ -14,6 +14,14 @@ function addBook(name, author, pages, read){
     book1.className = 'bookCard';
     libCont.appendChild(book1);
 
+    let closeButton = document.createElement('button');
+    closeButton.textContent = 'X';
+    closeButton.classList = 'closeButton';
+    closeButton.addEventListener('click', function(){
+        libCont.removeChild(book1);
+    })
+    book1.appendChild(closeButton);
+
     let bookTitle = document.createElement('h4');
     bookTitle.textContent ='Title: ' + this.name;
     bookTitle.classList = 'bookInfo title'
@@ -33,20 +41,21 @@ function addBook(name, author, pages, read){
     if(this.read == true){
         bookRead.textContent = "Read It!";
         bookRead.classList = 'bookInfo bookButton beenRead';
-        bookRead.addEventListener('click', function(){
-            bookRead.classList.remove('beenRead');
-            bookRead.classList.add('notRead');
-            bookRead.textContent = 'Mark Read?'
-        })
     }else{
         bookRead.textContent = "Mark Read?";
         bookRead.classList = 'bookInfo bookButton notRead';
-        bookRead.addEventListener('click', function(){
+    }
+    bookRead.addEventListener('click', function(){
+        if(bookRead.classList == 'bookInfo bookButton beenRead'){
+            bookRead.classList.remove('beenRead');
+            bookRead.classList.add('notRead');
+            bookRead.textContent = "Mark Read?";
+        }else{
             bookRead.classList.remove('notRead');
             bookRead.classList.add('beenRead');
-            bookRead.textContent = 'Read It!'
-        })
-    };
+            bookRead.textContent = "Read It!";
+        }
+    })
     book1.appendChild(bookRead);
 
 };
